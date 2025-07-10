@@ -40,9 +40,12 @@ public class FirstPersonControls : MonoBehaviour
     [Space(5)]
     public float crouchHeight = 1f; // Height of the player when crouching
     public float standingHeight = 2f; // Height of the player when standing
-    public float crouchSpeed = 2.5f; // Speed at which the player moves when crouching
-    private bool isCrouching = false; // Whether the player is currently crouching
+    public float crouchSpeed = 8f; // Speed at which the player moves when crouching
+    public bool isCrouching = false; // Whether the player is currently crouching
 
+    [Header("General")]
+    [Space(5)]
+    public SideEffects sideEffects;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -196,26 +199,29 @@ public class FirstPersonControls : MonoBehaviour
         Counter2 = 0;
         Counter3++;
 
-        Debug.Log("other");
+        Debug.Log("PickUp");
 
-        if (Counter3 == 1)
-        {
-            CanShoot = false;
-            slot1GameObject.SetActive(false);
-            slot2GameObject.SetActive(false);
-            slot3GameObject.SetActive(true);
-        }
+        // Perform a raycast from the camera's position forward
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+        // Debugging: Draw the ray in the Scene view
+        Debug.DrawRay(playerCamera.position, playerCamera.forward *
+        2f, Color.red, 2f);
 
-        if (Counter3 == 2)
+        if (Physics.Raycast(ray, out hit, 2f))
         {
+            // Check if the hit object has the tag "PickUp"
+            if (hit.collider.CompareTag("Pill"))
+            {
+                sideEffects = hit.collider.GetComponent<SideEffects>();
+                sideEffects.PickUpPill();
+                Debug.Log("pill interacted");
+                Destroy(hit.collider.transform.parent.gameObject);
+            }
             
-            Counter3 = 0;
-            slot1GameObject.SetActive(false);
-            slot2GameObject.SetActive(false);
-            slot3GameObject.SetActive(false);
-
+        
         }
-    }
+}
 
     public void Shoot() 
     {
