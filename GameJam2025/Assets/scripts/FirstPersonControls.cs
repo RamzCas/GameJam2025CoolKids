@@ -31,6 +31,10 @@ public class FirstPersonControls : MonoBehaviour
 
     [Header("Shooting Controls")]
     public bool CanShoot;
+    public GameObject projectilePrefab; 
+    public Transform firePoint; 
+    public float projectileSpeed = 20f; 
+  
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -64,6 +68,8 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Slot1.performed += ctx => Slot1();
         playerInput.Player.Slot2.performed += ctx => Slot2();
         playerInput.Player.Slot3.performed += ctx => Slot3();
+
+        playerInput.Player.Shoot.performed += ctx => Shoot();
 
     }
 
@@ -160,6 +166,7 @@ public class FirstPersonControls : MonoBehaviour
     {
         Counter1 = 0;
         Counter2++;
+        Counter3 = 0;
 
         Debug.Log("Tazer");
 
@@ -185,6 +192,46 @@ public class FirstPersonControls : MonoBehaviour
 
     public void Slot3() 
     {
+        Counter1 = 0;
+        Counter2 = 0;
+        Counter3++;
+
+        Debug.Log("other");
+
+        if (Counter3 == 1)
+        {
+            CanShoot = false;
+            slot1GameObject.SetActive(false);
+            slot2GameObject.SetActive(false);
+            slot3GameObject.SetActive(true);
+        }
+
+        if (Counter3 == 2)
+        {
+            
+            Counter3 = 0;
+            slot1GameObject.SetActive(false);
+            slot2GameObject.SetActive(false);
+            slot3GameObject.SetActive(false);
+
+        }
+    }
+
+    public void Shoot() 
+    {
+        if (CanShoot) 
+        {
+            Debug.Log("Shoot");
+           
+            GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+            
+            Rigidbody rb = projectile.GetComponent<Rigidbody>();
+            rb.velocity = firePoint.forward * projectileSpeed;
+
+           
+            Destroy(projectile, 3f);
+        }
     
     }
 
