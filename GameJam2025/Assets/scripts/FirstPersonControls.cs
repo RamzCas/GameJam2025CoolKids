@@ -20,6 +20,18 @@ public class FirstPersonControls : MonoBehaviour
     private Vector3 velocity; // Velocity of the player
     private CharacterController characterController; // Reference to the CharacterController component
 
+    [Header("Slots")]
+    [Space(5)]
+    public GameObject slot1GameObject;
+    public int Counter1;
+    public GameObject slot2GameObject;
+    public int Counter2;
+    public GameObject slot3GameObject;
+    public int Counter3;
+
+    [Header("Shooting Controls")]
+    public bool CanShoot;
+
     [Header("CROUCH SETTINGS")]
     [Space(5)]
     public float crouchHeight = 1f; // Height of the player when crouching
@@ -48,6 +60,11 @@ public class FirstPersonControls : MonoBehaviour
         // Subscribe to the look input events
         playerInput.Player.Look.performed += ctx => lookInput = ctx.ReadValue<Vector2>(); // Update lookInput when look input is performed
         playerInput.Player.Look.canceled += ctx => lookInput = Vector2.zero; // Reset lookInput when look input is canceled
+
+        playerInput.Player.Slot1.performed += ctx => Slot1();
+        playerInput.Player.Slot2.performed += ctx => Slot2();
+        playerInput.Player.Slot3.performed += ctx => Slot3();
+
     }
 
 
@@ -109,6 +126,66 @@ public class FirstPersonControls : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime; // Apply gravity to the velocity
         characterController.Move(velocity * Time.deltaTime); // Apply the velocity to the character
+    }
+
+    public void Slot1() 
+    {
+        Counter1++;
+        Counter2 = 0;
+        Counter3 = 0;
+        Debug.Log("Light");
+        
+
+        if (Counter1 == 1) 
+        {
+            CanShoot = false;
+            slot1GameObject.SetActive(true);
+            slot2GameObject.SetActive(false);
+            slot3GameObject.SetActive(false);
+        }
+
+        if (Counter1 == 2) 
+        {
+            Counter1 = 0;
+            slot1GameObject.SetActive(false);
+            slot2GameObject.SetActive(false);
+            slot3GameObject.SetActive(false);
+           
+        }
+
+
+    }
+
+    public void Slot2() 
+    {
+        Counter1 = 0;
+        Counter2++;
+
+        Debug.Log("Tazer");
+
+
+        if (Counter2 == 1)
+        {
+            CanShoot = true;
+            slot1GameObject.SetActive(false);
+            slot2GameObject.SetActive(true);
+            slot3GameObject.SetActive(false);
+        }
+
+        if (Counter2 == 2)
+        {
+            CanShoot = false;
+            Counter2 = 0;
+            slot1GameObject.SetActive(false);
+            slot2GameObject.SetActive(false);
+            slot3GameObject.SetActive(false);
+
+        }
+    }
+
+    public void Slot3() 
+    {
+    
     }
 
 }
