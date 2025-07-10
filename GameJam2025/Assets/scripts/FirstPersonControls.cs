@@ -33,8 +33,11 @@ public class FirstPersonControls : MonoBehaviour
     public bool CanShoot;
     public GameObject projectilePrefab; 
     public Transform firePoint; 
-    public float projectileSpeed = 20f; 
-  
+    public float projectileSpeed = 20f;
+
+    [Header("Maps")]
+    public GameObject MapOverView;
+
 
     [Header("CROUCH SETTINGS")]
     [Space(5)]
@@ -73,6 +76,9 @@ public class FirstPersonControls : MonoBehaviour
         playerInput.Player.Slot3.performed += ctx => Slot3();
 
         playerInput.Player.Shoot.performed += ctx => Shoot();
+
+        playerInput.Player.Map.performed += ctx => MapOn();
+        playerInput.Player.Map.canceled += ctx => MapOff();
 
     }
 
@@ -241,4 +247,13 @@ public class FirstPersonControls : MonoBehaviour
     
     }
 
+    public void MapOn() 
+    {
+        MapOverView.SetActive(true);
+    }
+
+    public void MapOff() 
+    {
+        MapOverView?.SetActive(false);
+    }
 }
