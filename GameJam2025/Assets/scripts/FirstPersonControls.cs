@@ -226,7 +226,7 @@ public class FirstPersonControls : MonoBehaviour
                 sideEffects = hit.collider.GetComponent<SideEffects>();
                 sideEffects.PickUpPill();
                 Debug.Log("pill interacted");
-                //Destroy(hit.collider.transform.parent.gameObject);
+                Destroy(hit.collider.transform.parent.gameObject);
             }
             
         
