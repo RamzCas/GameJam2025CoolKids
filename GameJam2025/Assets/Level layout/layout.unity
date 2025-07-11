@@ -41615,6 +41615,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1652216596685322587, guid: 8c4d5d5867014d54782919809f79e72f,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2471470012200128640, guid: 8c4d5d5867014d54782919809f79e72f,
         type: 3}
       propertyPath: timer
@@ -41768,7 +41773,7 @@ PrefabInstance:
     - target: {fileID: 8038391585856255368, guid: 8c4d5d5867014d54782919809f79e72f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.78
+      value: -0.265
       objectReference: {fileID: 0}
     - target: {fileID: 8038391585856255368, guid: 8c4d5d5867014d54782919809f79e72f,
         type: 3}
@@ -41778,7 +41783,7 @@ PrefabInstance:
     - target: {fileID: 8038391585856255368, guid: 8c4d5d5867014d54782919809f79e72f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.46
+      value: -4.272
       objectReference: {fileID: 0}
     - target: {fileID: 8038391585856255368, guid: 8c4d5d5867014d54782919809f79e72f,
         type: 3}
