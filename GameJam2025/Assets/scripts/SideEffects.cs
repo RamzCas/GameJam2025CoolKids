@@ -21,6 +21,9 @@ public class SideEffects : MonoBehaviour
     [Space(5)]
     public Animator mainCamAnim;
 
+    [Header("Other Scripts")]
+    public Timer timer;
+
     public void PickUpPill()
     {
         switch (EffectID)
@@ -39,6 +42,7 @@ public class SideEffects : MonoBehaviour
         //Debug.Log("Viagra");
         if (characterController != null && firstPersonControls != null)
         {
+            timer.TimeRemanding += 30;
             characterController.height = firstPersonControls.crouchHeight;
             firstPersonControls.isCrouching = true;
             StartCoroutine(WaitToNormal());
@@ -50,6 +54,7 @@ public class SideEffects : MonoBehaviour
         Debug.Log("Rainbow");
         //if (rainbowCanvas != null && rainbowAnim != null)
         //{
+            timer.TimeRemanding += 30;
             rainbowCanvas.SetActive(true);
             rainbowAnim.enabled = true;
             StartCoroutine(WaitToNormal());
@@ -63,6 +68,7 @@ public class SideEffects : MonoBehaviour
         //Debug.Log("Dizzy");
         if (mainCamAnim != null)
         {
+            timer.TimeRemanding += 30;
             mainCamAnim.enabled= true;
             StartCoroutine(WaitToNormal());
         }

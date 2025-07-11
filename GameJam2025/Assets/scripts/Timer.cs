@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-   public TextMeshProUGUI TimerText;
+    public TextMeshProUGUI TimerText;
     public float TimeRemanding;
 
     void Update()
