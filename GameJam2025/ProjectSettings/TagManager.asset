@@ -7,6 +7,7 @@ TagManager:
   - Light
   - Pill
   - Bullet
+  - AI
   layers:
   - Default
   - TransparentFX

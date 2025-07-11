@@ -50,6 +50,9 @@ public class FirstPersonControls : MonoBehaviour
     [Header("General")]
     [Space(5)]
     public SideEffects sideEffects;
+
+    [Header("pacients in rooms")]
+    public float PacientsRemanding;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
