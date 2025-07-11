@@ -12,6 +12,7 @@ public class AI : MonoBehaviour
     public GameObject P1;
     public GameObject P2;
     public GameObject P3;
+    public AudioManager AudioManager;
 
     [Header("Ai settings")]
     public float MaxSpeed;
@@ -74,6 +75,7 @@ public class AI : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet")) 
         {
+            AudioManager.Player.PlayOneShot(AudioManager.Grunt);
             shot = true;
             PosNumber = 4;
             agent.speed = MinSpeed;

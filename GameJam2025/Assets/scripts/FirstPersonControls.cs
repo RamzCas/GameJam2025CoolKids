@@ -8,6 +8,7 @@ public class FirstPersonControls : MonoBehaviour
     [Header("MOVEMENT SETTINGS")]
     [Space(5)]
     // Public variables to set movement and look speed, and the player camera
+    public GameObject WalkSound;
     public float moveSpeed; // Speed at which the player moves
     public float lookSpeed; // Sensitivity of the camera movement
     public float gravity = -9.81f; // Gravity value
@@ -53,6 +54,9 @@ public class FirstPersonControls : MonoBehaviour
 
     [Header("pacients in rooms")]
     public float PacientsRemanding;
+
+    [Header("music manager")]
+    public AudioManager AudioManager;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -117,6 +121,17 @@ public class FirstPersonControls : MonoBehaviour
 
         // Move the character controller based on the movement vector and speed
         characterController.Move(move * currentSpeed * Time.deltaTime);
+
+
+        if (moveInput.x > 0 || moveInput.y > 0 || moveInput.x > 0 && moveInput.y > 0 || moveInput.x < 0 || moveInput.y < 0) 
+        {
+            WalkSound.SetActive(true);
+        }
+
+        else 
+        {
+            WalkSound?.SetActive(false);
+        }
     }
 
     public void LookAround()
@@ -240,6 +255,7 @@ public class FirstPersonControls : MonoBehaviour
         if (CanShoot) 
         {
             Debug.Log("Shoot");
+            AudioManager.Player.PlayOneShot(AudioManager.Tazer);
             StartCoroutine(TazerCoolDown());
 
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
