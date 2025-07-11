@@ -102,8 +102,8 @@ public class SideEffects : MonoBehaviour
 
     private void MakeRainbowNormal()
     {
-       /* rainbowAnim.enabled = false;
-        rainbowCanvas.SetActive(false);*/
+        rainbowAnim.enabled = false;
+        rainbowCanvas.SetActive(false);
     }
 
     private void MakeCamNormal()
@@ -115,7 +115,7 @@ public class SideEffects : MonoBehaviour
 
     private void Update()
     {
-        /*if (rainbowCanvas.activeSelf)
+       /* if (rainbowCanvas.activeSelf)
         {
             Debug.Log("Rainbow time");
             RainbowTimer += Time.deltaTime;
