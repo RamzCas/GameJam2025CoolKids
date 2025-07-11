@@ -31,6 +31,10 @@ public class FirstPersonControls : MonoBehaviour
     public int Counter3;
 
     [Header("Shooting Controls")]
+    //public GameObject ReadyLight;
+    public MeshRenderer TazerMeshRenderer;
+    public Material Red;
+    public Material Green;
     public bool CanShoot;
     public GameObject projectilePrefab;
     public GameObject tazerParticle;
@@ -96,6 +100,17 @@ public class FirstPersonControls : MonoBehaviour
         Move();
         LookAround();
         ApplyGravity();
+
+
+        if(CanShoot) 
+        {
+            TazerMeshRenderer.material = Green;
+        }
+
+        if(CanShoot ==  false) 
+        {
+            TazerMeshRenderer.material = Red;
+        }
     }
 
 
