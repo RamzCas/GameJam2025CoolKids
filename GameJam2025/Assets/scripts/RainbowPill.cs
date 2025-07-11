@@ -39,7 +39,7 @@ public class RainbowPill : MonoBehaviour
             RainbowTimer += Time.deltaTime;
         }
 
-        if(RainbowTimer >= 10) 
+        if(RainbowTimer >= effectTime) 
         {
             isEffected = false;
             RainbowTimer = 0;
