@@ -235,7 +235,8 @@ public class FirstPersonControls : MonoBehaviour
         if (CanShoot) 
         {
             Debug.Log("Shoot");
-           
+            StartCoroutine(TazerCoolDown());
+
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             //tazerParticle.SetActive(true);
 
@@ -247,6 +248,13 @@ public class FirstPersonControls : MonoBehaviour
             Destroy(projectile, 3f);
         }
     
+    }
+
+    public IEnumerator TazerCoolDown()
+    {
+        CanShoot = false;
+        yield return new WaitForSeconds(0.5f);
+        CanShoot = true;
     }
 
     public void MapOn() 
