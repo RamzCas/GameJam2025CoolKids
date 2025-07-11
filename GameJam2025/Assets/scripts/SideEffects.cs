@@ -24,6 +24,11 @@ public class SideEffects : MonoBehaviour
     [Header("Other Scripts")]
     public Timer timer;
 
+    [Header("Timer")]
+    public float ViagraTimer;
+    public float RainbowTimer;
+    public float DizzyTimer;
+
     public void PickUpPill()
     {
         switch (EffectID)
@@ -58,6 +63,9 @@ public class SideEffects : MonoBehaviour
             rainbowCanvas.SetActive(true);
             rainbowAnim.enabled = true;
             StartCoroutine(WaitToNormal());
+            
+       
+
        // }
        
     }
@@ -94,8 +102,8 @@ public class SideEffects : MonoBehaviour
 
     private void MakeRainbowNormal()
     {
-        rainbowAnim.enabled = false;
-        rainbowCanvas.SetActive(false);
+       /* rainbowAnim.enabled = false;
+        rainbowCanvas.SetActive(false);*/
     }
 
     private void MakeCamNormal()
@@ -103,4 +111,21 @@ public class SideEffects : MonoBehaviour
         //
         mainCamAnim.enabled = false;
     }
- }
+
+
+    private void Update()
+    {
+        /*if (rainbowCanvas.activeSelf)
+        {
+            Debug.Log("Rainbow time");
+            RainbowTimer += Time.deltaTime;
+        }
+
+        if (RainbowTimer >= 2)
+        {
+            rainbowAnim.enabled = false;
+            rainbowCanvas.SetActive(false);
+            RainbowTimer = 0;
+        }*/
+    }
+}
