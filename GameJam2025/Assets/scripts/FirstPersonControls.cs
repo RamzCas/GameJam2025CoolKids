@@ -31,7 +31,8 @@ public class FirstPersonControls : MonoBehaviour
 
     [Header("Shooting Controls")]
     public bool CanShoot;
-    public GameObject projectilePrefab; 
+    public GameObject projectilePrefab;
+    public GameObject tazerParticle;
     public Transform firePoint; 
     public float projectileSpeed = 20f;
 
@@ -236,6 +237,7 @@ public class FirstPersonControls : MonoBehaviour
             Debug.Log("Shoot");
            
             GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            //tazerParticle.SetActive(true);
 
             
             Rigidbody rb = projectile.GetComponent<Rigidbody>();

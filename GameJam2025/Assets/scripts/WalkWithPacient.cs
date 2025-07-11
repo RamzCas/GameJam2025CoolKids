@@ -23,14 +23,14 @@ public class WalkWithPacient : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && AI.shot == true)
         {
-            AI.agent.speed = AI.MinSpeed;
             LeftAlone = true;
+            AI.agent.speed = AI.MinSpeed;
         }
     }
 
     private void Update()
     {
-        if (LeftAlone == true) 
+        if (LeftAlone == true && AI.shot == true) 
         {
             timer += Time.deltaTime;
         }
@@ -39,10 +39,12 @@ public class WalkWithPacient : MonoBehaviour
         {
             AI.PosNumber = 0;
             AI.shot = false;
-            LeftAlone = false;
+            LeftAlone = true;
             timer = 0;
             AI.agent.speed = AI.MaxSpeed;
             AI.TargetGameObject.transform.position = AI.P1.transform.position;
         }
+
+
     }
 }

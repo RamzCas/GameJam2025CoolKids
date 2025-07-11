@@ -12,11 +12,10 @@ public class SideEffects : MonoBehaviour
     public bool isEffected = false;
     public float effectTime = 10f;
 
-    [Header("Flicker Settings")]
+    [Header("Rainbow Settings")]
     [Space(5)]
-    public Light[] lights;
-    //public float flickerDuration = 5f; // total time in seconds
-    public float flickerInterval = 0.2f; // time between flickers
+    public GameObject rainbowCanvas;
+    public Animator rainbowAnim;
 
     [Header("Camera Settings")]
     [Space(5)]
@@ -38,52 +37,47 @@ public class SideEffects : MonoBehaviour
     public void ViagraEffects()
     {
         //Debug.Log("Viagra");
-        characterController.height = firstPersonControls.crouchHeight;
-        firstPersonControls.isCrouching = true;
-        StartCoroutine(WaitToNormal());
+        if (characterController != null && firstPersonControls != null)
+        {
+            characterController.height = firstPersonControls.crouchHeight;
+            firstPersonControls.isCrouching = true;
+            StartCoroutine(WaitToNormal());
+        }
     }
 
     public void RainbowEffects()
     {
-        //Debug.Log("Rainbow");
-        StartCoroutine(FlickerLights());
+        Debug.Log("Rainbow");
+        //if (rainbowCanvas != null && rainbowAnim != null)
+        //{
+            rainbowCanvas.SetActive(true);
+            rainbowAnim.enabled = true;
+            StartCoroutine(WaitToNormal());
+       // }
+       
     }
-    private IEnumerator FlickerLights()
-    {
-        float timer = 0f;
-
-        while (timer < effectTime)
-        {
-            foreach (Light light in lights)
-            {
-                light.color = Random.ColorHSV();
-                // Optional: random intensity too
-                light.intensity = Random.Range(0.5f, 2f);
-            }
-
-            yield return new WaitForSeconds(flickerInterval);
-            timer += flickerInterval;
-        }
-
-        if (timer >= effectTime)
-        { MakeLightsNormal(); }
-
-    }
+   
 
     public void DizzyEffects()
     {
         //Debug.Log("Dizzy");
-        mainCamAnim.enabled= true;
-        StartCoroutine(WaitToNormal());
+        if (mainCamAnim != null)
+        {
+            mainCamAnim.enabled= true;
+            StartCoroutine(WaitToNormal());
+        }
+        
     }
 
     public IEnumerator WaitToNormal()
     {
+        Debug.Log("normal");
         yield return new WaitForSeconds(effectTime);
         isEffected = false;
 
         MakeHeightNormal();
         MakeCamNormal();
+        MakeRainbowNormal();
     }
 
     private void MakeHeightNormal()
@@ -92,10 +86,10 @@ public class SideEffects : MonoBehaviour
         firstPersonControls.isCrouching = false;
     }
 
-    private void MakeLightsNormal()
+    private void MakeRainbowNormal()
     {
-        //
-        //make light white again? change intensity back?
+        rainbowAnim.enabled = false;
+        rainbowCanvas.SetActive(false);
     }
 
     private void MakeCamNormal()

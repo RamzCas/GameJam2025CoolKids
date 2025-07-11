@@ -77,6 +77,7 @@ public class AI : MonoBehaviour
             shot = true;
             PosNumber = 4;
             agent.speed = MinSpeed;
+            Destroy(other.gameObject);
             
         }
     }

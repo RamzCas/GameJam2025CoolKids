@@ -11,5 +11,13 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        Destroy(this.gameObject);
+    }
 
+   /* private void OnTriggerEnter(Collider other)
+    {
+        Destroy(this.gameObject);
+    }*/
 }
