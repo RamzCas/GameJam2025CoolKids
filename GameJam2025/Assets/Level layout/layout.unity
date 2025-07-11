@@ -12987,6 +12987,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6027605971189405096, guid: 9a0a145e86f64f948b18479f1fcc1bc4,
         type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6027605971189405096, guid: 9a0a145e86f64f948b18479f1fcc1bc4,
+        type: 3}
       propertyPath: PacientsRemanding
       value: 4
       objectReference: {fileID: 0}
