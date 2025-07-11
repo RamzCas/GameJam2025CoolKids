@@ -24,7 +24,7 @@ public class DizzyPill : MonoBehaviour
         {
             Debug.Log("Dizzy Effects on");
             isEffected = true;
-            timer.TimeRemanding += 30;
+            //timer.TimeRemanding += 30;
         }
 
        if( isEffected == true) 

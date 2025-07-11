@@ -22,7 +22,7 @@ public class ViagraPill : MonoBehaviour
         if (Pill.activeSelf == false) 
         {
             isEffected = true;
-            timer.TimeRemanding += 30;
+            //timer.TimeRemanding += 30;
             characterController.height = firstPersonControls.crouchHeight;
             firstPersonControls.isCrouching = true;
         }

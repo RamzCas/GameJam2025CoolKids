@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
 
@@ -43,6 +44,7 @@ public class FirstPersonControls : MonoBehaviour
 
     [Header("Maps")]
     public GameObject MapOverView;
+    public TextMeshProUGUI remain;
 
 
     [Header("CROUCH SETTINGS")]
@@ -61,6 +63,7 @@ public class FirstPersonControls : MonoBehaviour
 
     [Header("music manager")]
     public AudioManager AudioManager;
+    public Timer Timer;
     private void Awake()
     {
         // Get and store the CharacterController component attached to this GameObject
@@ -111,6 +114,8 @@ public class FirstPersonControls : MonoBehaviour
         {
             TazerMeshRenderer.material = Red;
         }
+
+        remain.text = PacientsRemanding.ToString();
     }
 
 
@@ -259,6 +264,8 @@ public class FirstPersonControls : MonoBehaviour
                 //Destroy(hit.collider.transform.parent.gameObject);
                 //Destroy(hit.collider.gameObject);
                 hit.collider.gameObject.SetActive(false);
+                Timer.TimeRemanding += 30;
+
             }
             
         

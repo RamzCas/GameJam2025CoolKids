@@ -29,7 +29,7 @@ public class RainbowPill : MonoBehaviour
         {
             Debug.Log("Rainbow Effects on");
             isEffected = true;
-            timer.TimeRemanding += 30;
+            //timer.TimeRemanding += 30;
             rainbowCanvas.SetActive(true);
             rainbowAnim.enabled = true;
         }
