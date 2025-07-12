@@ -8,6 +8,7 @@ public class DizzyPill : MonoBehaviour
     public bool isEffected = false;
     public float effectTime = 10f;
     public GameObject Pill;
+    public GameObject penisparts;
 
     [Header("Camera Settings")]
     public Animator mainCamAnim;
@@ -31,6 +32,7 @@ public class DizzyPill : MonoBehaviour
         {
             DizzyTimer += Time.deltaTime;
             mainCamAnim.enabled = true;
+            penisparts.SetActive(true);
         }
 
        if (DizzyTimer >= effectTime ) 
@@ -38,6 +40,7 @@ public class DizzyPill : MonoBehaviour
             mainCamAnim.enabled = false;
             DizzyTimer = 0;
             isEffected = false; 
+            penisparts.SetActive (false);
             Destroy(this.gameObject);
         }
 
