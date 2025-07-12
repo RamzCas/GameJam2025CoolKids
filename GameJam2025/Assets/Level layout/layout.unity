@@ -15801,6 +15801,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1718825602}
+    - targetCorrespondingSourceObject: {fileID: 8022716355772543697, guid: 9a0a145e86f64f948b18479f1fcc1bc4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1718825603}
     - targetCorrespondingSourceObject: {fileID: 1097356474849435298, guid: 9a0a145e86f64f948b18479f1fcc1bc4,
         type: 3}
       insertIndex: -1
@@ -43781,6 +43785,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1718825603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690335553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f5bed664d095f44ba3d59a4db2af79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Timer: {fileID: 1718825598}
+  PlayerCam: {fileID: 1992100457}
+  CurrentFOV: 0
+  MaxFOV: 95
+  MinFOV: 30
 --- !u!1 &1720473887
 GameObject:
   m_ObjectHideFlags: 0

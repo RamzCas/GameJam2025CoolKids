@@ -20,6 +20,7 @@ public class FOVChange : MonoBehaviour
         if(Timer.TimeRemanding >= MaxFOV) 
         {
             PlayerCam.fieldOfView = MaxFOV;    
+            Timer.TimeRemanding = MaxFOV;
         }
 
         if(Timer.TimeRemanding <= MinFOV) 
