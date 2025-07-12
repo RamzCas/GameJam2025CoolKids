@@ -97,7 +97,12 @@ public class FirstPersonControls : MonoBehaviour
 
     }
 
-
+    public void GameStart()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
+    }
     private void Update()
     {
         Move();

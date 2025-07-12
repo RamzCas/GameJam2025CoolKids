@@ -21,8 +21,6 @@ public class PauseMan : MonoBehaviour
     {
         Pausescreen.SetActive(false);
         Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         IsPaused = false;
         Controlscreen.SetActive(false);
     }
@@ -53,6 +51,17 @@ public class PauseMan : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+    }
+
+    public void ClosePause()
+    {
+        Pausescreen.SetActive(false);
+        Controlscreen.SetActive(false);
+        IsPaused = false;
+        escPressed = 0;
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void Controlthings()
