@@ -10,6 +10,7 @@ public class ViagraPill : MonoBehaviour
     public bool isEffected = false;
     public float effectTime = 10f;
     public GameObject Pill;
+    public GameObject PEnis;
 
     [Header("Other Scripts")]
     public Timer timer;
@@ -30,6 +31,7 @@ public class ViagraPill : MonoBehaviour
         if(isEffected == true) 
         {
             ViagraTimer += Time.deltaTime;
+            PEnis.SetActive(true);
         }
 
         if(ViagraTimer > effectTime) 
@@ -38,6 +40,7 @@ public class ViagraPill : MonoBehaviour
             firstPersonControls.isCrouching = false;
             isEffected = false;
             ViagraTimer = 0;
+            PEnis.SetActive(false);
             Destroy(this.gameObject);
         }
     }
